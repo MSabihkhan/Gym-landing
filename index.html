@@ -1,0 +1,1718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulseFit – Transform Your Body. Your Life.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #FF5500;
+      --orange-light: #FF7733;
+      --bg: #0d0d0d;
+      --bg2: #161616;
+      --bg3: #1e1e1e;
+      --border: #2a2a2a;
+      --text: #ffffff;
+      --muted: #888888;
+      --green: #22c55e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 38px; height: 38px;
+      background: var(--orange);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
+
+    .logo-text span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-ghost {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color .2s;
+    }
+
+    .btn-ghost:hover { color: #fff; }
+
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-light);
+      transform: translateY(-1px);
+    }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 5%;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=85&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.28);
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(13,13,13,0.95) 45%, transparent 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,85,0,0.15);
+      border: 1px solid rgba(255,85,0,0.35);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--orange);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .badge-dot {
+      width: 6px; height: 6px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(1.4); }
+    }
+
+    .hero h1 {
+      font-size: clamp(46px, 6vw, 82px);
+      font-weight: 900;
+      line-height: 1.02;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span { color: var(--orange); }
+
+    .hero p {
+      font-size: 16px;
+      color: #aaa;
+      max-width: 460px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 13px 26px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: border-color .2s, background .2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--orange);
+      background: rgba(255,85,0,0.06);
+    }
+
+    .play-icon {
+      width: 28px; height: 28px;
+      background: var(--orange);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+    }
+
+    .btn-cta-large {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background .2s, transform .15s;
+    }
+
+    .btn-cta-large:hover {
+      background: var(--orange-light);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+    }
+
+    .stat-item { text-align: left; }
+
+    .stat-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    /* Today's Workout floating card */
+    .workout-card-float {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      background: rgba(22,22,22,0.92);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      width: 260px;
+    }
+
+    .float-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+
+    .float-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .float-date {
+      font-size: 11px;
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .exercise-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exercise-item:last-of-type { border-bottom: none; }
+
+    .ex-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .ex-sets {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .ex-done { color: var(--orange); font-size: 14px; }
+
+    .progress-bar-wrap {
+      margin-top: 16px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .progress-bar {
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--orange), #ff8800);
+      border-radius: 3px;
+      width: 65%;
+      transition: width 1s ease;
+    }
+
+    /* ─── WORKOUTS ───────────────────────────────────────── */
+    section { padding: 100px 5%; }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--orange);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title span { color: var(--orange); }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: border-color .2s;
+      white-space: nowrap;
+    }
+
+    .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+    .workout-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .workout-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: pointer;
+      transition: transform .25s;
+    }
+
+    .workout-card:hover { transform: translateY(-6px); }
+
+    .workout-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s;
+    }
+
+    .workout-card:hover img { transform: scale(1.05); }
+
+    .workout-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.88) 0%, transparent 55%);
+    }
+
+    .workout-level {
+      position: absolute;
+      top: 14px; left: 14px;
+      background: rgba(255,85,0,0.88);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .workout-level.beginner {
+      background: rgba(34,197,94,0.88);
+    }
+
+    .workout-level.advanced {
+      background: rgba(220,38,38,0.88);
+    }
+
+    .workout-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 18px;
+    }
+
+    .workout-name {
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    .workout-meta {
+      display: flex;
+      gap: 16px;
+    }
+
+    .workout-meta span {
+      font-size: 12px;
+      color: #aaa;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ─── FEATURES ───────────────────────────────────────── */
+    .features-section {
+      background: var(--bg2);
+      text-align: center;
+    }
+
+    .features-header { margin-bottom: 64px; }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+    }
+
+    .feature-item {
+      padding: 32px 24px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--bg3);
+      transition: border-color .2s, transform .2s;
+    }
+
+    .feature-item:hover {
+      border-color: var(--orange);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      width: 52px; height: 52px;
+      background: rgba(255,85,0,0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 22px;
+      color: var(--orange);
+    }
+
+    .feature-name {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .feature-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─── PROGRESS DEMO ──────────────────────────────────── */
+    .progress-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .progress-visual {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+    }
+
+    .progress-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .tab {
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: none;
+      transition: all .2s;
+    }
+
+    .tab.active {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+
+    .chart-wrap {
+      height: 160px;
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .bar-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bar {
+      width: 100%;
+      border-radius: 4px 4px 0 0;
+      background: var(--border);
+      transition: height 1s ease, background .3s;
+    }
+
+    .bar.active-bar { background: var(--orange); }
+    .bar.prev-bar { background: rgba(255,85,0,0.4); }
+
+    .bar-label {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .progress-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .mini-stat {
+      background: var(--bg3);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .mini-stat-val {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--orange);
+    }
+
+    .mini-stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .progress-text .section-label { text-align: left; }
+    .progress-text .section-title { margin-bottom: 20px; }
+
+    .progress-text p {
+      color: #aaa;
+      margin-bottom: 32px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: #ccc;
+      font-weight: 500;
+    }
+
+    .check-list li::before {
+      content: '✓';
+      color: var(--orange);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    /* ─── TRAINERS ───────────────────────────────────────── */
+    .trainers-section { text-align: center; background: var(--bg2); }
+
+    .trainers-header { margin-bottom: 56px; }
+
+    .trainers-header p {
+      color: var(--muted);
+      margin-top: 12px;
+      font-size: 15px;
+    }
+
+    .trainers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .trainer-card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg3);
+      transition: transform .25s, border-color .25s;
+      cursor: pointer;
+    }
+
+    .trainer-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--orange);
+    }
+
+    .trainer-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+
+    .trainer-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s;
+    }
+
+    .trainer-card:hover .trainer-img-wrap img { transform: scale(1.06); }
+
+    .trainer-specialty {
+      position: absolute;
+      bottom: 14px; left: 14px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .trainer-info {
+      padding: 18px;
+      text-align: left;
+    }
+
+    .trainer-name {
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .trainer-title {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .trainer-stats {
+      display: flex;
+      gap: 16px;
+    }
+
+    .trainer-stat {
+      font-size: 12px;
+      color: #aaa;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .trainer-stat span { color: var(--orange); font-weight: 700; }
+
+    /* ─── PRICING ────────────────────────────────────────── */
+    .pricing-section { text-align: center; }
+
+    .pricing-header { margin-bottom: 16px; }
+
+    .pricing-header p {
+      color: var(--muted);
+      margin-top: 12px;
+      font-size: 15px;
+    }
+
+    .pricing-toggle {
+      display: inline-flex;
+      gap: 0;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px;
+      margin-bottom: 56px;
+    }
+
+    .toggle-btn {
+      padding: 8px 22px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--muted);
+      transition: all .2s;
+    }
+
+    .toggle-btn.active {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      text-align: left;
+      transition: transform .2s;
+    }
+
+    .pricing-card:hover { transform: translateY(-4px); }
+
+    .pricing-card.popular {
+      background: var(--orange);
+      border-color: var(--orange);
+      position: relative;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+    }
+
+    .plan-name {
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .plan-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 24px;
+    }
+
+    .plan-price {
+      font-size: 42px;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .plan-price sup {
+      font-size: 22px;
+      font-weight: 700;
+      vertical-align: top;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    .plan-price-period {
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0.7;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin: 24px 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .plan-features li::before {
+      content: '✓';
+      width: 18px; height: 18px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .pricing-card.popular .plan-features li::before {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .btn-plan {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-plan-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+    }
+
+    .btn-plan-outline:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .btn-plan-white {
+      background: #fff;
+      border: none;
+      color: var(--orange);
+    }
+
+    .btn-plan-white:hover { background: #f0f0f0; }
+
+    /* ─── CTA BANNER ─────────────────────────────────────── */
+    .cta-banner {
+      margin: 0 5% 80px;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      padding: 80px 8%;
+      background: var(--bg2);
+    }
+
+    .cta-banner-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.18;
+    }
+
+    .cta-banner-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    .cta-banner h2 span { color: var(--orange); }
+
+    .cta-banner p {
+      color: #aaa;
+      font-size: 16px;
+      margin-bottom: 36px;
+    }
+
+    .cta-banner-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 64px 5% 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr repeat(3, 1fr);
+      gap: 60px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      margin: 16px 0 24px;
+      max-width: 280px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-link {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 16px;
+      transition: all .2s;
+    }
+
+    .social-link:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      background: rgba(255,85,0,0.08);
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-col ul a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color .2s;
+    }
+
+    .footer-col ul a:hover { color: var(--orange); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-bottom span { color: var(--orange); }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color .2s;
+    }
+
+    .footer-links a:hover { color: #fff; }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .workout-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .trainers-grid { grid-template-columns: repeat(2, 1fr); }
+      .workout-card-float { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .progress-section { grid-template-columns: 1fr; }
+      .hero-stats { gap: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .workout-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .trainers-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAVBAR ─────────────────────────────────────────── -->
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-icon">⚡</div>
+      <span class="logo-text">PULSE<span>FIT</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#workouts">Workouts</a></li>
+      <li><a href="#trainers">Trainers</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-ghost">Log In</button>
+      <button class="btn-primary">Start Free Trial</button>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ───────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        New: AI-Powered Training
+      </div>
+
+      <h1>
+        Transform<br>
+        Your Body<br>
+        <span>Your Life</span>
+      </h1>
+
+      <p>
+        Join thousands achieving their fitness goals with personalized workouts, expert trainers, and a supportive community. Start your transformation today.
+      </p>
+
+      <div class="hero-btns">
+        <button class="btn-cta-large">
+          Start 7-Day Free Trial →
+        </button>
+        <button class="btn-secondary">
+          <span class="play-icon">▶</span>
+          Watch Demo
+        </button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">500K+</div>
+          <div class="stat-label">Active Members</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">1000+</div>
+          <div class="stat-label">Workouts</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Expert Trainers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating workout card -->
+    <div class="workout-card-float">
+      <div class="float-header">
+        <span class="float-title">Today's Workout</span>
+        <span class="float-date">Day 12</span>
+      </div>
+      <div class="exercise-item">
+        <div>
+          <div class="ex-name">Warm Up</div>
+          <div class="ex-sets">5 min</div>
+        </div>
+        <span class="ex-done">✓</span>
+      </div>
+      <div class="exercise-item">
+        <div>
+          <div class="ex-name">Circuit 1</div>
+          <div class="ex-sets">3 sets · 8 reps</div>
+        </div>
+        <span class="ex-done">✓</span>
+      </div>
+      <div class="exercise-item">
+        <div>
+          <div class="ex-name">Circuit 2</div>
+          <div class="ex-sets">3 sets · 10 reps</div>
+        </div>
+        <span style="color:var(--muted); font-size:13px;">→</span>
+      </div>
+      <div class="exercise-item">
+        <div>
+          <div class="ex-name">Cool Down</div>
+          <div class="ex-sets">5 min</div>
+        </div>
+        <span style="color:var(--muted); font-size:13px;">○</span>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label">
+          <span>Progress</span>
+          <span style="color:var(--orange)">65%</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="heroProgress"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WORKOUTS ───────────────────────────────────────── -->
+  <section id="workouts">
+    <div class="section-header fade-in">
+      <div>
+        <div class="section-label">Workouts</div>
+        <h2 class="section-title">Popular <span>Programs</span></h2>
+      </div>
+      <button class="btn-outline">View All Workouts</button>
+    </div>
+
+    <div class="workout-grid">
+      <div class="workout-card fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&auto=format&fit=crop"
+          alt="HIIT Cardio"
+          loading="lazy"
+        />
+        <div class="workout-card-overlay"></div>
+        <div class="workout-level">Intermediate</div>
+        <div class="workout-info">
+          <div class="workout-name">HIIT Cardio</div>
+          <div class="workout-meta">
+            <span>⏱ 30 min</span>
+            <span>🔥 400 cal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="workout-card fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80&auto=format&fit=crop"
+          alt="Strength Training"
+          loading="lazy"
+        />
+        <div class="workout-card-overlay"></div>
+        <div class="workout-level advanced">Advanced</div>
+        <div class="workout-info">
+          <div class="workout-name">Strength Training</div>
+          <div class="workout-meta">
+            <span>⏱ 45 min</span>
+            <span>🔥 350 cal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="workout-card fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80&auto=format&fit=crop"
+          alt="Yoga Flow"
+          loading="lazy"
+        />
+        <div class="workout-card-overlay"></div>
+        <div class="workout-level beginner">Beginner</div>
+        <div class="workout-info">
+          <div class="workout-name">Yoga Flow</div>
+          <div class="workout-meta">
+            <span>⏱ 40 min</span>
+            <span>🔥 200 cal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="workout-card fade-in">
+        <img
+          src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=600&q=80&auto=format&fit=crop"
+          alt="Boxing"
+          loading="lazy"
+        />
+        <div class="workout-card-overlay"></div>
+        <div class="workout-level">Intermediate</div>
+        <div class="workout-info">
+          <div class="workout-name">Boxing</div>
+          <div class="workout-meta">
+            <span>⏱ 35 min</span>
+            <span>🔥 450 cal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FEATURES ───────────────────────────────────────── -->
+  <section class="features-section" id="community">
+    <div class="features-header fade-in">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Everything You <span>Need</span></h2>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-item fade-in">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-name">AI Personal Trainer</div>
+        <p class="feature-desc">Get personalized workout plans that adapt in real-time based on your performance and goals, powered by AI.</p>
+      </div>
+      <div class="feature-item fade-in">
+        <div class="feature-icon">📊</div>
+        <div class="feature-name">Progress Tracking</div>
+        <p class="feature-desc">Track your workouts, calories, and body metrics with detailed analytics and visual progress charts.</p>
+      </div>
+      <div class="feature-item fade-in">
+        <div class="feature-icon">📹</div>
+        <div class="feature-name">Live Classes</div>
+        <p class="feature-desc">Join live sessions with expert trainers and workout alongside thousands of members in real-time.</p>
+      </div>
+      <div class="feature-item fade-in">
+        <div class="feature-icon">🥗</div>
+        <div class="feature-name">Nutrition Plans</div>
+        <p class="feature-desc">Customized meal plans and macro tracking to complement your fitness journey and maximize results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROGRESS DEMO ──────────────────────────────────── -->
+  <section>
+    <div class="progress-section">
+      <div class="progress-visual fade-in">
+        <div class="progress-tabs">
+          <button class="tab active" onclick="switchTab(this, 'weekly')">Weekly</button>
+          <button class="tab" onclick="switchTab(this, 'monthly')">Monthly</button>
+          <button class="tab" onclick="switchTab(this, 'yearly')">Yearly</button>
+        </div>
+
+        <div class="chart-wrap" id="chartBars">
+          <!-- bars injected by JS -->
+        </div>
+
+        <div class="progress-stats-row">
+          <div class="mini-stat">
+            <div class="mini-stat-val">12</div>
+            <div class="mini-stat-label">Workouts</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-val">4.8K</div>
+            <div class="mini-stat-label">Calories</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-val">6h 40m</div>
+            <div class="mini-stat-label">Active Time</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-text fade-in">
+        <div class="section-label">Progress Tracking</div>
+        <h2 class="section-title">See Your <span>Results</span></h2>
+        <p>
+          Real-time dashboards show exactly how far you've come. Track every rep, every mile, every calorie — and watch your body transform week by week.
+        </p>
+        <ul class="check-list">
+          <li>Workout frequency & streak tracking</li>
+          <li>Body composition & weight trends</li>
+          <li>Personal bests and milestone alerts</li>
+          <li>Compare with friends & community</li>
+        </ul>
+        <button class="btn-primary" style="padding:14px 28px; font-size:13px;">
+          Explore Analytics →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TRAINERS ───────────────────────────────────────── -->
+  <section class="trainers-section" id="trainers">
+    <div class="trainers-header fade-in">
+      <div class="section-label">Our Team</div>
+      <h2 class="section-title">Expert <span>Trainers</span></h2>
+      <p>Learn from certified professionals who are passionate about helping you achieve your goals.</p>
+    </div>
+
+    <div class="trainers-grid">
+      <div class="trainer-card fade-in">
+        <div class="trainer-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=500&q=80&auto=format&fit=crop&faces=1"
+            alt="Marcus Williams"
+            loading="lazy"
+          />
+          <div class="trainer-specialty">HIIT & Cardio</div>
+        </div>
+        <div class="trainer-info">
+          <div class="trainer-name">Marcus Williams</div>
+          <div class="trainer-title">Certified Performance Coach</div>
+          <div class="trainer-stats">
+            <span class="trainer-stat">⭐ <span>4.9</span></span>
+            <span class="trainer-stat">👥 <span>2.3K</span> clients</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="trainer-card fade-in">
+        <div class="trainer-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=500&q=80&auto=format&fit=crop"
+            alt="Elena Vasquez"
+            loading="lazy"
+          />
+          <div class="trainer-specialty">Yoga & Mindfulness</div>
+        </div>
+        <div class="trainer-info">
+          <div class="trainer-name">Elena Vasquez</div>
+          <div class="trainer-title">RYT-500 Yoga Instructor</div>
+          <div class="trainer-stats">
+            <span class="trainer-stat">⭐ <span>4.8</span></span>
+            <span class="trainer-stat">👥 <span>1.7K</span> clients</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="trainer-card fade-in">
+        <div class="trainer-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500&q=80&auto=format&fit=crop"
+            alt="James Carter"
+            loading="lazy"
+          />
+          <div class="trainer-specialty">Strength & Power</div>
+        </div>
+        <div class="trainer-info">
+          <div class="trainer-name">James Carter</div>
+          <div class="trainer-title">Strength & Conditioning Specialist</div>
+          <div class="trainer-stats">
+            <span class="trainer-stat">⭐ <span>5.0</span></span>
+            <span class="trainer-stat">👥 <span>3.1K</span> clients</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="trainer-card fade-in">
+        <div class="trainer-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1609899537878-48700d1db8e7?w=500&q=80&auto=format&fit=crop"
+            alt="Crina Wilson"
+            loading="lazy"
+          />
+          <div class="trainer-specialty">Boxing & MMA</div>
+        </div>
+        <div class="trainer-info">
+          <div class="trainer-name">Crina Wilson</div>
+          <div class="trainer-title">Combat Sports Coach</div>
+          <div class="trainer-stats">
+            <span class="trainer-stat">⭐ <span>4.9</span></span>
+            <span class="trainer-stat">👥 <span>1.4K</span> clients</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRICING ────────────────────────────────────────── -->
+  <section class="pricing-section" id="pricing">
+    <div class="pricing-header fade-in">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Choose Your <span>Plan</span></h2>
+      <p>Start with a 7-day free trial. Cancel anytime.</p>
+    </div>
+
+    <div class="pricing-toggle fade-in">
+      <button class="toggle-btn active" onclick="setToggle(this, 'monthly')">Monthly</button>
+      <button class="toggle-btn" onclick="setToggle(this, 'annual')">Annual <span style="color:var(--green); font-size:10px;"> –20%</span></button>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card fade-in">
+        <div class="plan-name">Basic</div>
+        <div class="plan-desc">Perfect for getting started</div>
+        <div class="plan-price">
+          <sup>$</sup>9<span style="font-size:28px">.99</span><span class="plan-price-period">/month</span>
+        </div>
+        <ul class="plan-features">
+          <li>Access to 100+ workouts</li>
+          <li>Basic progress tracking</li>
+          <li>Community access</li>
+          <li>Email support</li>
+        </ul>
+        <button class="btn-plan btn-plan-outline">Start Free Trial</button>
+      </div>
+
+      <div class="pricing-card popular fade-in">
+        <div class="popular-badge">Most Popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-desc">Most popular choice</div>
+        <div class="plan-price">
+          <sup>$</sup>19<span style="font-size:28px">.99</span><span class="plan-price-period">/month</span>
+        </div>
+        <ul class="plan-features">
+          <li>Access to 500+ workouts</li>
+          <li>AI personal trainer</li>
+          <li>Advanced analytics</li>
+          <li>Live classes</li>
+          <li>Nutrition plans</li>
+          <li>Priority support</li>
+        </ul>
+        <button class="btn-plan btn-plan-white">Start Free Trial</button>
+      </div>
+
+      <div class="pricing-card fade-in">
+        <div class="plan-name">Elite</div>
+        <div class="plan-desc">For serious athletes</div>
+        <div class="plan-price">
+          <sup>$</sup>39<span style="font-size:28px">.99</span><span class="plan-price-period">/month</span>
+        </div>
+        <ul class="plan-features">
+          <li>Everything in Pro</li>
+          <li>1-on-1 trainer sessions</li>
+          <li>Custom workout plans</li>
+          <li>Body composition tracking</li>
+          <li>Exclusive content</li>
+          <li>24/7 support</li>
+        </ul>
+        <button class="btn-plan btn-plan-outline">Start Free Trial</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA BANNER ─────────────────────────────────────── -->
+  <div class="cta-banner fade-in">
+    <div class="cta-banner-bg"></div>
+    <div class="cta-banner-content">
+      <h2>Ready to Start Your <span>Transformation?</span></h2>
+      <p>Join over 500,000 members who have already changed their lives with PulseFit.</p>
+      <div class="cta-banner-btns">
+        <button class="btn-cta-large">Start 7-Day Free Trial →</button>
+        <button class="btn-secondary">View All Plans</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon">⚡</div>
+          <span class="logo-text">PULSE<span>FIT</span></span>
+        </a>
+        <p>Transform your body and life with personalized workouts, expert trainers, and a supportive community.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" title="Instagram">📸</a>
+          <a href="#" class="social-link" title="X / Twitter">𝕏</a>
+          <a href="#" class="social-link" title="YouTube">▶</a>
+          <a href="#" class="social-link" title="TikTok">♪</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Workouts</h4>
+        <ul>
+          <li><a href="#">HIIT</a></li>
+          <li><a href="#">Strength</a></li>
+          <li><a href="#">Yoga</a></li>
+          <li><a href="#">Boxing</a></li>
+          <li><a href="#">Cardio</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Community</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 PulseFit. <span>All rights reserved.</span></p>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* Scroll-triggered fade-in */
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+    /* Chart bars */
+    const weekData = [40, 65, 55, 80, 70, 90, 75];
+    const monthData = [55, 60, 72, 85, 65, 78, 88, 70, 92, 80, 68, 95];
+    const days = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+
+    function renderChart(data, labels) {
+      const wrap = document.getElementById('chartBars');
+      const max = Math.max(...data);
+      wrap.innerHTML = data.map((v, i) => `
+        <div class="bar-col">
+          <div class="bar ${i === data.length - 2 ? 'active-bar' : i === data.length - 1 ? 'prev-bar' : ''}"
+               style="height:${(v / max) * 140}px"></div>
+          <span class="bar-label">${labels ? labels[i] : i + 1}</span>
+        </div>
+      `).join('');
+    }
+
+    renderChart(weekData, days);
+
+    /* Tab switching */
+    function switchTab(btn, type) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      if (type === 'weekly') renderChart(weekData, days);
+      else if (type === 'monthly') renderChart(monthData);
+      else renderChart([60, 72, 68, 85, 78, 90, 88, 92, 87, 95, 91, 98]);
+    }
+
+    /* Pricing toggle */
+    function setToggle(btn, type) {
+      document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const prices = document.querySelectorAll('.plan-price');
+      if (type === 'annual') {
+        const annual = ['7.99', '15.99', '31.99'];
+        prices.forEach((p, i) => {
+          const n = annual[i].split('.');
+          p.innerHTML = `<sup>$</sup>${n[0]}<span style="font-size:28px">.${n[1]}</span><span class="plan-price-period">/month</span>`;
+        });
+      } else {
+        const monthly = ['9.99', '19.99', '39.99'];
+        prices.forEach((p, i) => {
+          const n = monthly[i].split('.');
+          p.innerHTML = `<sup>$</sup>${n[0]}<span style="font-size:28px">.${n[1]}</span><span class="plan-price-period">/month</span>`;
+        });
+      }
+    }
+
+    /* Smooth nav active state on scroll */
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY + 80;
+      sections.forEach(s => {
+        const link = document.querySelector(`.nav-links a[href="#${s.id}"]`);
+        if (!link) return;
+        if (y >= s.offsetTop && y < s.offsetTop + s.offsetHeight) {
+          link.style.color = '#fff';
+        } else {
+          link.style.color = '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
