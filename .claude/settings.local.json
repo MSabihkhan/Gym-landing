@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-Content \"C:\\\\Users\\\\msabi\\\\OneDrive\\\\Desktop\\\\deepseektest\\\\Gym app claude\\\\index.html\")",
+      "Bash(Measure-Object -Line)",
+      "PowerShell(Get-Content *)"
+    ]
+  }
+}
